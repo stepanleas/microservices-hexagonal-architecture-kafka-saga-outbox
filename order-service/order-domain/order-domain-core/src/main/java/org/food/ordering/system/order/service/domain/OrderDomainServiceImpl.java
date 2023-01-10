@@ -15,6 +15,8 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -66,19 +68,23 @@ public class OrderDomainServiceImpl implements OrderDomainService {
     }
 
     private void setOrderProductInformation(Order order, Restaurant restaurant) {
-        Map<ProductId, Product> orderProducts = order.getItems()
+        Map<UUID, List<Product>> orderProducts = order.getItems()
             .stream()
             .map(OrderItem::getProduct)
-            .collect(Collectors.toMap(Product::getId, product -> product));
+            .collect(Collectors.groupingBy(
+                product -> product.getId().getValue(),
+                Collectors.mapping(product -> product, Collectors.toList())));
 
         restaurant.getProducts()
             .stream()
-            .filter(restaurantProduct ->
-                orderProducts.get(restaurantProduct.getId()) != null
-                && orderProducts.get(restaurantProduct.getId()).equals(restaurantProduct))
+            .filter(restaurantProduct -> orderProducts.get(restaurantProduct.getId().getValue()) != null)
             .forEach(restaurantProduct -> {
-                orderProducts.get(restaurantProduct.getId())
-                    .updateWithConfirmedNameAndPrice(restaurantProduct.getName(), restaurantProduct.getPrice());
+                orderProducts.get(restaurantProduct.getId().getValue())
+                    .stream()
+                    .filter(orderProduct -> orderProduct.equals(restaurantProduct))
+                    .forEach(orderProduct -> {
+                        orderProduct.updateWithConfirmedNameAndPrice(restaurantProduct.getName(), restaurantProduct.getPrice());
+                    });
             });
     }
 }
