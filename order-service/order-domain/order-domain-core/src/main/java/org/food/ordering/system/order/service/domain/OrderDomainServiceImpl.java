@@ -1,7 +1,6 @@
 package org.food.ordering.system.order.service.domain;
 
 import lombok.extern.slf4j.Slf4j;
-import org.food.ordering.system.domain.valueobject.ProductId;
 import org.food.ordering.system.order.service.domain.entity.Order;
 import org.food.ordering.system.order.service.domain.entity.OrderItem;
 import org.food.ordering.system.order.service.domain.entity.Product;
@@ -16,7 +15,6 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Slf4j
