@@ -2,12 +2,12 @@ DROP SCHEMA IF EXISTS "order" CASCADE;
 
 CREATE SCHEMA "order";
 
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 DROP TYPE IF EXISTS order_status;
-CREATE TYPE order_status AS ENUM ('PENDING','PAID','APPROVED','CANCELLED','CANCELLING')
+CREATE TYPE order_status AS ENUM ('PENDING','PAID','APPROVED','CANCELLED','CANCELLING');
 
-DROP TABLE IF EXISTS "orders".orders CASCADE
+DROP TABLE IF EXISTS "orders".orders CASCADE;
 
 CREATE TABLE "order".orders
 (
@@ -30,7 +30,7 @@ CREATE TABLE "order".order_items
     quantity integer NOT NULL,
     sub_total numeric(10,2) NOT NULL,
     CONSTRAINT order_items_pkey PRIMARY KEY (id, order_id)
-)
+);
 
 ALTER TABLE "order".order_items
     ADD CONSTRAINT "FK_ORDER_ID" FOREIGN KEY (order_id)
@@ -47,7 +47,7 @@ CREATE TABLE "order".order_address
     postal_code character varying COLLATE pg_catalog."default" NOT NULL,
     city character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT order_address_pkey PRIMARY KEY (id, order_id)
-)
+);
 
 ALTER TABLE "order".order_address
     ADD CONSTRAINT "FK_ORDER_ID" FOREIGN KEY (order_id)
@@ -163,30 +163,3 @@ CREATE trigger refresh_order_restaurant_m_view
 after INSERT OR UPDATE OR DELETE OR truncate
 ON restaurant.restaurant_products FOR each statement
 EXECUTE PROCEDURE restaurant.refresh_order_restaurant_m_view();
-
-
-
-
-
-INSERT INTO restaurant.restaurants(id, name, active)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb45', 'restaurant_1', TRUE);
-INSERT INTO restaurant.restaurants(id, name, active)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb46', 'restaurant_2', FALSE);
-
-INSERT INTO restaurant.products(id, name, price, available)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb47', 'product_1', 25.00, FALSE);
-INSERT INTO restaurant.products(id, name, price, available)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb48', 'product_2', 50.00, TRUE);
-INSERT INTO restaurant.products(id, name, price, available)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb49', 'product_3', 20.00, FALSE);
-INSERT INTO restaurant.products(id, name, price, available)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb50', 'product_4', 40.00, TRUE);
-
-INSERT INTO restaurant.restaurant_products(id, restaurant_id, product_id)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb51', 'd215b5f8-0249-4dc5-89a3-51fd148cfb45', 'd215b5f8-0249-4dc5-89a3-51fd148cfb47');
-INSERT INTO restaurant.restaurant_products(id, restaurant_id, product_id)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb52', 'd215b5f8-0249-4dc5-89a3-51fd148cfb45', 'd215b5f8-0249-4dc5-89a3-51fd148cfb48');
-INSERT INTO restaurant.restaurant_products(id, restaurant_id, product_id)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb53', 'd215b5f8-0249-4dc5-89a3-51fd148cfb46', 'd215b5f8-0249-4dc5-89a3-51fd148cfb49');
-INSERT INTO restaurant.restaurant_products(id, restaurant_id, product_id)
-	VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb54', 'd215b5f8-0249-4dc5-89a3-51fd148cfb46', 'd215b5f8-0249-4dc5-89a3-51fd148cfb50');
