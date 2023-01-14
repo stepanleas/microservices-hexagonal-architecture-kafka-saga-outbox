@@ -48,7 +48,7 @@
       }
     },
     {
-      "name": "paymentOrderStatus",
+      "name": "paymentStatus",
       "type": {
         "type": "enum",
         "name": "PaymentOrderStatus",
