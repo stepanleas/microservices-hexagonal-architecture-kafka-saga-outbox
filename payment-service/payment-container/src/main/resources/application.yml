@@ -1,15 +1,13 @@
 server:
-  port: 8180
+  port: 8182
 
 logging:
   level:
     org.food.ordering.system: DEBUG
 
-order-service:
+payment-service:
   payment-request-topic-name: payment-request
   payment-response-topic-name: payment-response
-  restaurant-approval-request-topic-name: restaurant-approval-request
-  restaurant-approval-response-topic-name: restaurant-approval-response
 
 spring:
   jpa:
@@ -20,7 +18,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=payment&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -51,7 +49,6 @@ kafka-consumer-config:
   key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
   payment-consumer-group-id: payment-topic-consumer
-  restaurant-approval-consumer-group-id: restaurant-approval-topic-consumer
   customer-group-id: customer-topic-consumer
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader
