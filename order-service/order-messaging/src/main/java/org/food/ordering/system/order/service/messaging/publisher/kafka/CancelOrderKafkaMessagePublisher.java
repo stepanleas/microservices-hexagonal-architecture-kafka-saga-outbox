@@ -3,6 +3,7 @@ package org.food.ordering.system.order.service.messaging.publisher.kafka;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
+import org.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import org.food.ordering.system.kafka.producer.service.KafkaProducer;
 import org.food.ordering.system.order.service.domain.config.OrderServiceConfigData;
 import org.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
@@ -18,7 +19,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private final KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
-    private final OrderKafkaMessageHelper orderKafkaMessageHelper;
+    private final KafkaMessageHelper kafkaMessageHelper;
 
     @Override
     public void publish(OrderCancelledEvent domainEvent) {
@@ -32,7 +33,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
             kafkaProducer.send(
                 orderServiceConfigData.getPaymentRequestTopicName(),
                 orderId, paymentRequestAvroModel,
-                orderKafkaMessageHelper.getKafkaCallback(orderServiceConfigData.getPaymentResponseTopicName(),paymentRequestAvroModel, orderId));
+                kafkaMessageHelper.getKafkaCallback(orderServiceConfigData.getPaymentResponseTopicName(),paymentRequestAvroModel, orderId));
 
             log.info("{} sent to Kafka for order id: {}", paymentRequestAvroModel.getClass().getSimpleName(), paymentRequestAvroModel.getOrderId());
         } catch (Exception e) {
