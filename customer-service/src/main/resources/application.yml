@@ -1,6 +1,10 @@
 server:
   port: 8181
 
+logging:
+  level:
+    org.food.ordering.system: DEBUG
+
 spring:
   jpa:
     open-in-view: false
