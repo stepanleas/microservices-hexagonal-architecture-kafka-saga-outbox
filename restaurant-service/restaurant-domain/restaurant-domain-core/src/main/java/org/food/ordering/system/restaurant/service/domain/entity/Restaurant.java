@@ -40,7 +40,7 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
             .orderApprovalId(new OrderApprovalId(UUID.randomUUID()))
             .restaurantId(getId())
             .orderId(getOrderDetail().getId())
-            .orderApprovalStatus(orderApprovalStatus)
+            .approvalStatus(orderApprovalStatus)
             .build();
     }
 
