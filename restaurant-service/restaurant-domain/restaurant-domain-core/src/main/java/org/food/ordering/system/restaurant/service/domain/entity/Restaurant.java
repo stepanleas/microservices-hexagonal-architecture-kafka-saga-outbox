@@ -23,7 +23,7 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
         }
 
         Money totalAmount = orderDetail.getProducts().stream().map(product -> {
-            if (product.isAvailable()) {
+            if (Boolean.FALSE.equals(product.isAvailable())) {
                 failureMessages.add("Product with id: " + product.getId().getValue() + " is not available");
             }
 

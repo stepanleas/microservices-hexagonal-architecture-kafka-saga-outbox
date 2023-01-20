@@ -1,6 +1,7 @@
 package org.food.ordering.system.order.service.dataaccess.order.adapter;
 
 import lombok.RequiredArgsConstructor;
+import org.food.ordering.system.domain.valueobject.OrderId;
 import org.food.ordering.system.order.service.dataaccess.order.mapper.OrderDataAccessMapper;
 import org.food.ordering.system.order.service.dataaccess.order.repository.OrderJpaRepository;
 import org.food.ordering.system.order.service.domain.entity.Order;
@@ -21,6 +22,12 @@ public class OrderRepositoryImpl implements OrderRepository {
     public Order save(Order order) {
         return orderDataAccessMapper.orderEntityToOrder(orderJpaRepository.
             save(orderDataAccessMapper.orderToOrderEntity(order)));
+    }
+
+    @Override
+    public Optional<Order> findById(OrderId orderId) {
+        return orderJpaRepository.findById(orderId.getValue())
+            .map(orderDataAccessMapper::orderEntityToOrder);
     }
 
     @Override

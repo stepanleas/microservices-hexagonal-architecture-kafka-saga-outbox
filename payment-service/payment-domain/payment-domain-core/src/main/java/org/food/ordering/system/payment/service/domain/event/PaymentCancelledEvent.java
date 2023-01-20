@@ -12,6 +12,7 @@ public class PaymentCancelledEvent extends PaymentEvent {
 
     public PaymentCancelledEvent(Payment payment, ZonedDateTime createdAt, DomainEventPublisher<PaymentCancelledEvent> domainEventPublisher) {
         super(payment, createdAt, Collections.emptyList());
+        this.paymentCancelledEventDomainEventPublisher = domainEventPublisher;
     }
 
     @Override

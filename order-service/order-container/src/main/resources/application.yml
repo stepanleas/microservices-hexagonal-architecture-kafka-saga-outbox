@@ -26,7 +26,6 @@ spring:
     driver-class-name: org.postgresql.Driver
     platform: postgres
     schema: classpath:init-schema.sql
-    data: classpath:init-data.sql
     initialization-mode: always
 
 kafka-config:
