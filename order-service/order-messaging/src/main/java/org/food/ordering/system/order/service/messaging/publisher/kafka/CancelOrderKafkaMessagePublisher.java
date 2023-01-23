@@ -2,19 +2,19 @@ package org.food.ordering.system.order.service.messaging.publisher.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.food.ordering.system.domain.events.publisher.DomainEventPublisher;
 import org.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
 import org.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import org.food.ordering.system.kafka.producer.service.KafkaProducer;
 import org.food.ordering.system.order.service.domain.config.OrderServiceConfigData;
 import org.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
-import org.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.OrderCancelledPaymentRequestMessageListener;
 import org.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRequestMessageListener {
+public class CancelOrderKafkaMessagePublisher implements DomainEventPublisher<OrderCancelledEvent> {
 
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
