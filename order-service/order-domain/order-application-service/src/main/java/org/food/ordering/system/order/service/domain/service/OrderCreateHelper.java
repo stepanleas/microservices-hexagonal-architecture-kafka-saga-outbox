@@ -1,7 +1,8 @@
-package org.food.ordering.system.order.service.domain;
+package org.food.ordering.system.order.service.domain.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.food.ordering.system.order.service.domain.OrderDomainService;
 import org.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import org.food.ordering.system.order.service.domain.entity.Customer;
 import org.food.ordering.system.order.service.domain.entity.Order;

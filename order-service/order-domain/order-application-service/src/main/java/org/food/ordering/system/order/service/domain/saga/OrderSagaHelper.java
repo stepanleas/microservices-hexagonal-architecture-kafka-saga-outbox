@@ -1,4 +1,4 @@
-package org.food.ordering.system.order.service.domain;
+package org.food.ordering.system.order.service.domain.saga;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class OrderSagaHelper {
         orderRepository.save(order);
     }
 
-    SagaStatus orderStatusToSagaStatus(OrderStatus orderStatus) {
+    public SagaStatus orderStatusToSagaStatus(OrderStatus orderStatus) {
         return switch (orderStatus) {
             case PAID -> SagaStatus.PROCESSING;
             case APPROVED -> SagaStatus.SUCCEEDED;
