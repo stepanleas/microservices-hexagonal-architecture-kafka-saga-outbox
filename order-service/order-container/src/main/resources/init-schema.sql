@@ -36,9 +36,9 @@ CREATE TABLE "order".order_items
 
 ALTER TABLE "order".order_items
     ADD CONSTRAINT "FK_ORDER_ID" FOREIGN KEY (order_id)
-    REFERENCES "order".orders (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE CASCADE
+        REFERENCES "order".orders (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
     NOT VALID;
 
 DROP TABLE IF EXISTS "order".order_address CASCADE;
@@ -55,11 +55,10 @@ CREATE TABLE "order".order_address
 
 ALTER TABLE "order".order_address
     ADD CONSTRAINT "FK_ORDER_ID" FOREIGN KEY (order_id)
-    REFERENCES "order".orders (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE CASCADE
+        REFERENCES "order".orders (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
     NOT VALID;
-
 
 DROP TYPE IF EXISTS saga_status;
 CREATE TYPE saga_status AS ENUM ('STARTED', 'FAILED', 'SUCCEEDED', 'PROCESSING', 'COMPENSATING', 'COMPENSATED');
@@ -113,6 +112,17 @@ CREATE INDEX "restaurant_approval_outbox_saga_status"
     ON "order".restaurant_approval_outbox
         (type, outbox_status, saga_status);
 
-CREATE UNIQUE INDEX "restaurant_approval_outbox_saga_id"
-    ON "order".restaurant_approval_outbox
-    (type, saga_id, saga_status);
+--CREATE UNIQUE INDEX "restaurant_approval_outbox_saga_id"
+--    ON "order".restaurant_approval_outbox
+--    (type, saga_id, saga_status);
+
+DROP TABLE IF EXISTS "order".customers CASCADE;
+
+CREATE TABLE "order".customers
+(
+    id uuid NOT NULL,
+    username character varying COLLATE pg_catalog."default" NOT NULL,
+    first_name character varying COLLATE pg_catalog."default" NOT NULL,
+    last_name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT customers_pkey PRIMARY KEY (id)
+);

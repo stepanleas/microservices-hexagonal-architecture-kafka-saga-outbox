@@ -45,6 +45,7 @@ public class OrderMessagingDataMapper {
             .setCustomerId(orderPaymentEventPayload.getCustomerId())
             .setOrderId(orderPaymentEventPayload.getOrderId())
             .setPrice(orderPaymentEventPayload.getPrice())
+            .setCreatedAt(orderPaymentEventPayload.getCreatedAt().toInstant())
             .setPaymentOrderStatus(PaymentOrderStatus.valueOf(orderPaymentEventPayload.getPaymentOrderStatus()))
             .build();
     }

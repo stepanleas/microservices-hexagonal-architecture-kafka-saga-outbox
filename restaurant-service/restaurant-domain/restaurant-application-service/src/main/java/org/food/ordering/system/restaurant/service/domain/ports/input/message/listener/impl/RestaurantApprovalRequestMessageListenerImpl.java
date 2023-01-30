@@ -1,9 +1,9 @@
-package org.food.ordering.system.restaurant.service.domain;
+package org.food.ordering.system.restaurant.service.domain.ports.input.message.listener.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.food.ordering.system.restaurant.service.domain.RestaurantApprovalRequestHelper;
 import org.food.ordering.system.restaurant.service.domain.dto.RestaurantApprovalRequest;
-import org.food.ordering.system.restaurant.service.domain.event.OrderApprovalEvent;
 import org.food.ordering.system.restaurant.service.domain.ports.input.message.listener.RestaurantApprovalRequestMessageListener;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,6 @@ public class RestaurantApprovalRequestMessageListenerImpl implements RestaurantA
 
     @Override
     public void approveOrder(RestaurantApprovalRequest restaurantApprovalRequest) {
-        OrderApprovalEvent orderApprovalEvent = restaurantApprovalRequestHelper.persistOrderApproval(restaurantApprovalRequest);
-        orderApprovalEvent.fire();
+        restaurantApprovalRequestHelper.persistOrderApproval(restaurantApprovalRequest);
     }
 }

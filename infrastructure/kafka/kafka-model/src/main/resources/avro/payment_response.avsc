@@ -1,7 +1,7 @@
 {
     "namespace": "org.food.ordering.system.kafka.order.avro.model",
     "type": "record",
-    "name": "RestaurantApprovalResponseAvroModel",
+    "name": "PaymentResponseAvroModel",
     "fields": [
         {
             "name": "id",
@@ -18,7 +18,14 @@
             }
         },
         {
-            "name": "restaurantId",
+            "name": "paymentId",
+            "type": {
+                "type": "string",
+                "logicalType": "uuid"
+            }
+        },
+        {
+            "name": "customerId",
             "type": {
                 "type": "string",
                 "logicalType": "uuid"
@@ -32,6 +39,15 @@
             }
         },
         {
+            "name": "price",
+            "type": {
+                "type": "bytes",
+                "logicalType": "decimal",
+                "precision": 10,
+                "scale": 2
+            }
+        },
+        {
             "name": "createdAt",
             "type": {
                 "type": "long",
@@ -39,11 +55,11 @@
             }
         },
         {
-            "name": "orderApprovalStatus",
+            "name": "paymentStatus",
             "type": {
                   "type": "enum",
-                  "name": "OrderApprovalStatus",
-                  "symbols": ["APPROVED", "REJECTED"]
+                  "name": "PaymentStatus",
+                  "symbols": ["COMPLETED", "CANCELLED", "FAILED"]
                }
         },
         {
