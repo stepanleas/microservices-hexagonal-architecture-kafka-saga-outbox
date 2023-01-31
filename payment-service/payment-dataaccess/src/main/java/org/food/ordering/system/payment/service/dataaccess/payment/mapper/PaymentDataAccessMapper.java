@@ -4,8 +4,8 @@ import org.food.ordering.system.domain.valueobject.CustomerId;
 import org.food.ordering.system.domain.valueobject.Money;
 import org.food.ordering.system.domain.valueobject.OrderId;
 import org.food.ordering.system.payment.service.dataaccess.payment.entity.PaymentEntity;
-import org.food.ordering.system.payment.service.domain.entity.Payment;
-import org.food.ordering.system.payment.service.domain.valueobject.PaymentId;
+import org.food.ordering.system.payment.service.domain.core.entity.Payment;
+import org.food.ordering.system.payment.service.domain.core.valueobject.PaymentId;
 import org.springframework.stereotype.Component;
 
 @Component

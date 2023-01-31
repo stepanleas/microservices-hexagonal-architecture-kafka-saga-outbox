@@ -4,11 +4,8 @@ import org.food.ordering.system.domain.valueobject.PaymentOrderStatus;
 import org.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
 import org.food.ordering.system.kafka.order.avro.model.PaymentResponseAvroModel;
 import org.food.ordering.system.kafka.order.avro.model.PaymentStatus;
-import org.food.ordering.system.payment.service.domain.dto.PaymentRequest;
-import org.food.ordering.system.payment.service.domain.event.PaymentCancelledEvent;
-import org.food.ordering.system.payment.service.domain.event.PaymentCompletedEvent;
-import org.food.ordering.system.payment.service.domain.event.PaymentFailedEvent;
-import org.food.ordering.system.payment.service.domain.outbox.model.OrderEventPayload;
+import org.food.ordering.system.payment.service.domain.application.dto.PaymentRequest;
+import org.food.ordering.system.payment.service.domain.application.outbox.model.OrderEventPayload;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

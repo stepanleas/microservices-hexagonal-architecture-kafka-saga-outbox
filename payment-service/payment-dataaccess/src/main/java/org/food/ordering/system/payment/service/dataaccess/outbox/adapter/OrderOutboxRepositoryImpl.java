@@ -8,8 +8,8 @@ import org.food.ordering.system.outbox.OutboxStatus;
 import org.food.ordering.system.payment.service.dataaccess.outbox.exception.OrderOutboxNotFoundException;
 import org.food.ordering.system.payment.service.dataaccess.outbox.mapper.OrderOutboxDataAccessMapper;
 import org.food.ordering.system.payment.service.dataaccess.outbox.repository.OrderOutboxJpaRepository;
-import org.food.ordering.system.payment.service.domain.outbox.model.OrderOutboxMessage;
-import org.food.ordering.system.payment.service.domain.ports.output.repository.OrderOutboxRepository;
+import org.food.ordering.system.payment.service.domain.application.outbox.model.OrderOutboxMessage;
+import org.food.ordering.system.payment.service.domain.application.ports.output.repository.OrderOutboxRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

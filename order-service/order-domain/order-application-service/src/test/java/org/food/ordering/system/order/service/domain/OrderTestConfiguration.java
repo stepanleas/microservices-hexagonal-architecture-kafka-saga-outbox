@@ -1,8 +1,10 @@
 package org.food.ordering.system.order.service.domain;
 
-import org.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.PaymentRequestMessagePublisher;
-import org.food.ordering.system.order.service.domain.ports.output.message.publisher.restaurantapproval.RestaurantApprovalRequestMessagePublisher;
-import org.food.ordering.system.order.service.domain.ports.output.repository.*;
+import org.food.ordering.system.order.service.domain.application.ports.output.message.publisher.payment.PaymentRequestMessagePublisher;
+import org.food.ordering.system.order.service.domain.application.ports.output.message.publisher.restaurantapproval.RestaurantApprovalRequestMessagePublisher;
+import org.food.ordering.system.order.service.domain.application.ports.output.repository.*;
+import org.food.ordering.system.order.service.domain.core.OrderDomainService;
+import org.food.ordering.system.order.service.domain.core.OrderDomainServiceImpl;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;

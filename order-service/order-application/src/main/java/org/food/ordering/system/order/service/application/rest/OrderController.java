@@ -2,11 +2,11 @@ package org.food.ordering.system.order.service.application.rest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
-import org.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
-import org.food.ordering.system.order.service.domain.dto.track.TrackOrderQuery;
-import org.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
-import org.food.ordering.system.order.service.domain.ports.input.service.OrderApplicationService;
+import org.food.ordering.system.order.service.domain.application.dto.create.CreateOrderCommand;
+import org.food.ordering.system.order.service.domain.application.dto.create.CreateOrderResponse;
+import org.food.ordering.system.order.service.domain.application.dto.track.TrackOrderQuery;
+import org.food.ordering.system.order.service.domain.application.dto.track.TrackOrderResponse;
+import org.food.ordering.system.order.service.domain.application.ports.input.service.OrderApplicationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

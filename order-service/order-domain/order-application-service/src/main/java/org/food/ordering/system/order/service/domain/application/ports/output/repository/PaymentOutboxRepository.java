@@ -1,0 +1,25 @@
+package org.food.ordering.system.order.service.domain.application.ports.output.repository;
+
+import org.food.ordering.system.order.service.domain.application.outbox.model.payment.OrderPaymentOutboxMessage;
+import org.food.ordering.system.outbox.OutboxStatus;
+import org.food.ordering.system.saga.SagaStatus;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface PaymentOutboxRepository {
+    OrderPaymentOutboxMessage save(OrderPaymentOutboxMessage orderPaymentOutboxMessage);
+
+    Optional<List<OrderPaymentOutboxMessage>> findByTypeAndOutboxStatusAndSagaStatus(String type,
+                                                                                     OutboxStatus outboxStatus,
+                                                                                     SagaStatus... sagaStatus);
+
+    Optional<OrderPaymentOutboxMessage> findByTypeAndSagaIdAndSagaStatus(String type,
+                                                                               UUID sagaId,
+                                                                               SagaStatus... sagaStatus);
+
+    void deleteByTypeAndOutboxStatusAndSagaStatus(String type,
+                                                  OutboxStatus outboxStatus,
+                                                  SagaStatus... sagaStatus);
+}

@@ -6,10 +6,10 @@ import org.food.ordering.system.kafka.producer.service.KafkaProducer;
 import org.food.ordering.system.outbox.OutboxStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.food.ordering.system.restaurant.service.domain.config.RestaurantServiceConfigData;
-import org.food.ordering.system.restaurant.service.domain.outbox.model.OrderEventPayload;
-import org.food.ordering.system.restaurant.service.domain.outbox.model.OrderOutboxMessage;
-import org.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.RestaurantApprovalResponseMessagePublisher;
+import org.food.ordering.system.restaurant.service.domain.application.config.RestaurantServiceConfigData;
+import org.food.ordering.system.restaurant.service.domain.application.outbox.model.OrderEventPayload;
+import org.food.ordering.system.restaurant.service.domain.application.outbox.model.OrderOutboxMessage;
+import org.food.ordering.system.restaurant.service.domain.application.ports.output.message.publisher.RestaurantApprovalResponseMessagePublisher;
 import org.food.ordering.system.restaurant.service.messaging.mapper.RestaurantMessagingDataMapper;
 import org.springframework.stereotype.Component;
 

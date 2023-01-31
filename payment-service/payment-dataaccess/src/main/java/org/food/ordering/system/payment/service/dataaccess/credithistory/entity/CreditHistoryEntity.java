@@ -2,7 +2,7 @@ package org.food.ordering.system.payment.service.dataaccess.credithistory.entity
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.food.ordering.system.payment.service.domain.valueobject.TransactionType;
+import org.food.ordering.system.payment.service.domain.core.valueobject.TransactionType;
 
 import java.math.BigDecimal;
 import java.util.Objects;

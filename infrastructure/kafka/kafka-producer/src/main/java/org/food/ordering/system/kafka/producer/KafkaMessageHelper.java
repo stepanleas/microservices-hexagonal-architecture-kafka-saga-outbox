@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.food.ordering.system.order.service.domain.exception.OrderDomainException;
+import org.food.ordering.system.order.service.domain.core.exception.OrderDomainException;
 import org.food.ordering.system.outbox.OutboxStatus;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;

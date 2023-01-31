@@ -3,23 +3,23 @@ package org.food.ordering.system.order.service.domain;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.food.ordering.system.domain.valueobject.*;
-import org.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
-import org.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
-import org.food.ordering.system.order.service.domain.dto.create.OrderAddress;
-import org.food.ordering.system.order.service.domain.dto.create.OrderItem;
-import org.food.ordering.system.order.service.domain.entity.Customer;
-import org.food.ordering.system.order.service.domain.entity.Order;
-import org.food.ordering.system.order.service.domain.entity.Product;
-import org.food.ordering.system.order.service.domain.entity.Restaurant;
-import org.food.ordering.system.order.service.domain.exception.OrderDomainException;
-import org.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
-import org.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentEventPayload;
-import org.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentOutboxMessage;
-import org.food.ordering.system.order.service.domain.ports.input.service.OrderApplicationService;
-import org.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
-import org.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
-import org.food.ordering.system.order.service.domain.ports.output.repository.PaymentOutboxRepository;
-import org.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
+import org.food.ordering.system.order.service.domain.application.dto.create.CreateOrderCommand;
+import org.food.ordering.system.order.service.domain.application.dto.create.CreateOrderResponse;
+import org.food.ordering.system.order.service.domain.application.dto.create.OrderAddress;
+import org.food.ordering.system.order.service.domain.application.dto.create.OrderItem;
+import org.food.ordering.system.order.service.domain.application.mapper.OrderDataMapper;
+import org.food.ordering.system.order.service.domain.application.outbox.model.payment.OrderPaymentEventPayload;
+import org.food.ordering.system.order.service.domain.application.outbox.model.payment.OrderPaymentOutboxMessage;
+import org.food.ordering.system.order.service.domain.application.ports.input.service.OrderApplicationService;
+import org.food.ordering.system.order.service.domain.application.ports.output.repository.CustomerRepository;
+import org.food.ordering.system.order.service.domain.application.ports.output.repository.OrderRepository;
+import org.food.ordering.system.order.service.domain.application.ports.output.repository.PaymentOutboxRepository;
+import org.food.ordering.system.order.service.domain.application.ports.output.repository.RestaurantRepository;
+import org.food.ordering.system.order.service.domain.core.entity.Customer;
+import org.food.ordering.system.order.service.domain.core.entity.Order;
+import org.food.ordering.system.order.service.domain.core.entity.Product;
+import org.food.ordering.system.order.service.domain.core.entity.Restaurant;
+import org.food.ordering.system.order.service.domain.core.exception.OrderDomainException;
 import org.food.ordering.system.outbox.OutboxStatus;
 import org.food.ordering.system.saga.SagaStatus;
 import org.junit.jupiter.api.Assertions;
@@ -143,8 +143,7 @@ public class OrderApplicationServiceTest {
                     .build()))
             .build();
 
-        Customer customer = new Customer();
-        customer.setId(new CustomerId(CUSTOMER_ID));
+        Customer customer = new Customer(new CustomerId(CUSTOMER_ID));
 
         Restaurant restaurantResponse = Restaurant.builder()
             .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))

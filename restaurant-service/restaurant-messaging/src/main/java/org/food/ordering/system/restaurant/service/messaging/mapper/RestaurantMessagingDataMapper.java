@@ -5,9 +5,9 @@ import org.food.ordering.system.domain.valueobject.RestaurantOrderStatus;
 import org.food.ordering.system.kafka.order.avro.model.OrderApprovalStatus;
 import org.food.ordering.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
 import org.food.ordering.system.kafka.order.avro.model.RestaurantApprovalResponseAvroModel;
-import org.food.ordering.system.restaurant.service.domain.dto.RestaurantApprovalRequest;
-import org.food.ordering.system.restaurant.service.domain.entity.Product;
-import org.food.ordering.system.restaurant.service.domain.outbox.model.OrderEventPayload;
+import org.food.ordering.system.restaurant.service.domain.application.dto.RestaurantApprovalRequest;
+import org.food.ordering.system.restaurant.service.domain.core.entity.Product;
+import org.food.ordering.system.restaurant.service.domain.application.outbox.model.OrderEventPayload;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

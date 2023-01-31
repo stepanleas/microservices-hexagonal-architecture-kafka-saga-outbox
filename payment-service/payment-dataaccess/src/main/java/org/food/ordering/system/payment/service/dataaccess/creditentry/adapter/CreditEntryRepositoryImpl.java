@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.food.ordering.system.domain.valueobject.CustomerId;
 import org.food.ordering.system.payment.service.dataaccess.creditentry.mapper.CreditEntryDataAccessMapper;
 import org.food.ordering.system.payment.service.dataaccess.creditentry.repository.CreditEntryJpaRepository;
-import org.food.ordering.system.payment.service.domain.entity.CreditEntry;
-import org.food.ordering.system.payment.service.domain.ports.output.repository.CreditEntryRepository;
+import org.food.ordering.system.payment.service.domain.core.entity.CreditEntry;
+import org.food.ordering.system.payment.service.domain.application.ports.output.repository.CreditEntryRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

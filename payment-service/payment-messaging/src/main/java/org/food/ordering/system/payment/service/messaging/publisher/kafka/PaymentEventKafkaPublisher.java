@@ -6,10 +6,10 @@ import org.food.ordering.system.kafka.order.avro.model.PaymentResponseAvroModel;
 import org.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import org.food.ordering.system.kafka.producer.service.KafkaProducer;
 import org.food.ordering.system.outbox.OutboxStatus;
-import org.food.ordering.system.payment.service.domain.config.PaymentServiceConfigData;
-import org.food.ordering.system.payment.service.domain.outbox.model.OrderEventPayload;
-import org.food.ordering.system.payment.service.domain.outbox.model.OrderOutboxMessage;
-import org.food.ordering.system.payment.service.domain.ports.output.message.publisher.PaymentResponseMessagePublisher;
+import org.food.ordering.system.payment.service.domain.application.config.PaymentServiceConfigData;
+import org.food.ordering.system.payment.service.domain.application.outbox.model.OrderEventPayload;
+import org.food.ordering.system.payment.service.domain.application.outbox.model.OrderOutboxMessage;
+import org.food.ordering.system.payment.service.domain.application.ports.output.message.publisher.PaymentResponseMessagePublisher;
 import org.food.ordering.system.payment.service.messaging.mapper.PaymentMessagingDataMapper;
 import org.springframework.stereotype.Component;
 
